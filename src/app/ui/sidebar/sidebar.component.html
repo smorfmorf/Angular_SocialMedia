@@ -1,0 +1,50 @@
+<img src="/LogoSide.svg" alt="" class="ml16 mb20" />
+
+<nav>
+  <ul class="menu__list">
+    @for (menuItem of menuItems; track menuItem.label) {
+    <li
+      class="menu__item"
+      [routerLink]="[menuItem.link]"
+      routerLinkActive="active"
+    >
+      <a class="menu__btn">
+        <svg [icon]="menuItem.icon"></svg>
+        <b>{{ menuItem.label }}</b>
+      </a>
+    </li>
+    }
+  </ul>
+</nav>
+
+<div class="sidebar__subscribers">
+  <p class="sidebar__subscribers-title">Подписчики</p>
+
+  <div class="sidebar__subscribers-list">
+    @for(profile of $subscribers | async; track profile.id){
+    <app-subscriber-card [profile]="profile" />
+    }
+  </div>
+
+  <div class="sidebar__subscribers-all">
+    <a>Все подписчики</a>
+    <svg icon="arrow"></svg>
+  </div>
+</div>
+
+<footer class="footer">
+  @if(myAccount(); as myAccount) {
+  <div class="footer__profile" [routerLink]="['/profile', myAccount.id]">
+    <img
+      [src]="myAccount.avatarUrl ? (myAccount.avatarUrl | imgUrl) : 'Img.svg'"
+      width="32"
+      height="32"
+      alt=""
+    />
+    <b>{{ myAccount.firstName }}</b>
+  </div>
+  <a class="footer__settings" [routerLink]="'/settings'">
+    <svg icon="settings"></svg>
+  </a>
+  }
+</footer>

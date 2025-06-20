@@ -1,0 +1,12 @@
+:host {
+  padding: 16px 20px;
+  display: grid;
+  grid-template-rows: 1fr min-content;
+}
+
+.chat-wrapper {
+  display: grid;
+  gap: 12px;
+
+  overflow-y: auto;
+}

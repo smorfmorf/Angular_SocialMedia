@@ -1,0 +1,9 @@
+<!-- Ты сохраняешь результат avatarUrl() в локальную переменную avatarUrl. -->
+@if(avatarUrl(); as avatarUrl) { @if(avatarUrl){
+<img [src]="avatarUrl | imgUrl" alt="" />
+} @else {
+<img src="/Img.svg" alt="" />
+} } @if (chatUrl()) {
+
+<img src="/chat.jpg" alt="" />
+}

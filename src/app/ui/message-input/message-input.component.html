@@ -1,0 +1,14 @@
+<app-avatar
+  *ngIf="profile() as profile"
+  [avatarUrl]="profile.avatarUrl"
+  class="size32"
+/>
+<textarea
+  class="hindden-textarea"
+  [(ngModel)]="postText"
+  (input)="onTextAreaInput($event)"
+></textarea>
+
+<button class="btn-icon" (click)="onCreatePost()">
+  <svg icon="send" class="svg-send"></svg>
+</button>

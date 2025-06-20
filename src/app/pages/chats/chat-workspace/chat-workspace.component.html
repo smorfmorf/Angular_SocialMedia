@@ -1,0 +1,7 @@
+@if($activeChat | async; as chat){
+
+<app-chat-workspace-header [profile]="chat.userFirst" />
+
+<app-chat-workspace-wrapper [chat]="chat" />
+
+}

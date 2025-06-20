@@ -1,0 +1,41 @@
+:host {
+  display: grid;
+  gap: 32px;
+  grid-template-columns: 120px 1fr;
+  padding-bottom: 16px;
+  border-bottom: 1px solid var(--lightColor);
+}
+.avatar {
+  height: 132px;
+  width: 132px;
+
+  &-input {
+    display: none;
+  }
+}
+
+.drop-zone {
+  border-radius: 2px;
+  border: 1px dashed var(--lightColor);
+  padding: 16px;
+  display: grid;
+  place-content: center;
+
+  &.fileover {
+    border: 1px dashed var(--primaryColor);
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    svg {
+      width: 32px;
+      height: 32px;
+      color: white;
+      margin-bottom: 10px;
+    }
+  }
+}

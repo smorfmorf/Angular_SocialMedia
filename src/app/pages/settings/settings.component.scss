@@ -1,0 +1,33 @@
+:host {
+  display: grid;
+  gap: 48px;
+  grid-template-columns: 322px 1fr;
+}
+
+.profile-form {
+  &__wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    border: 1px solid var(--lightColor);
+    background-color: var(--darkColor);
+    padding: 32px;
+    height: calc(100dvh - (24px * 4));
+  }
+
+  display: grid;
+  gap: 20px;
+
+  &__footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+  }
+}
+
+.two-columns {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}

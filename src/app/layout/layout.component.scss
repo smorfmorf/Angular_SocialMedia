@@ -1,0 +1,9 @@
+:host {
+  //для обращения к обертке компонента например: app-layout
+  display: grid;
+  grid-template-columns: 300px 1fr;
+  height: 100dvh;
+}
+.content {
+  padding: 24px;
+}

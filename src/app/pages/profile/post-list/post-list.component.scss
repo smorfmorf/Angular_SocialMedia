@@ -1,0 +1,20 @@
+.wrapper {
+  margin-top: 20px;
+  display: grid;
+  gap: 16px;
+  overflow-y: auto;
+
+  &::-webkit-scrollbar {
+    width: 0.6rem;
+
+    &-track {
+      background: #333;
+    }
+
+    &-thumb {
+      background: mediumpurple;
+      border-radius: 1rem;
+      border: 2px solid #333;
+    }
+  }
+}

@@ -1,0 +1,9 @@
+<div class="chat-wrapper" #wrapper>
+  @for (message of messages(); track message.id) {
+  <app-chat-message [message]="message" />
+  }
+</div>
+
+<div>
+  <app-message-input (created)="onSendMessage($event)" />
+</div>

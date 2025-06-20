@@ -1,0 +1,107 @@
+:host {
+  display: block;
+  padding: 20px 12px;
+  position: relative;
+  background-color: var(--darkColor);
+}
+.menu__list {
+  display: grid;
+  gap: 8px;
+
+  margin-bottom: 20px;
+}
+
+.menu__item {
+  padding: 8px 16px;
+  cursor: pointer;
+  list-style: none;
+  background: none;
+  font-weight: 700;
+  font-size: 14px;
+  border-radius: 5px;
+
+  &.active,
+  &:hover {
+    background-color: #161616;
+    a {
+      color: var(--primaryColor);
+    }
+  }
+}
+
+.menu__btn {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background-color: transparent;
+  border: none;
+  color: white;
+  cursor: pointer;
+  text-decoration: none;
+
+  svg {
+    width: 16px;
+    height: 16px;
+  }
+}
+
+.sidebar__subscribers {
+  padding: 0px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+
+  &-title {
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 133%;
+  }
+  &-all {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+    svg {
+      width: 16px;
+      height: 16px;
+    }
+    cursor: pointer;
+
+    &:hover {
+      color: var(--primaryColor);
+    }
+  }
+}
+
+.footer {
+  position: absolute;
+  width: calc(100% - 20px);
+  bottom: 20px;
+  background-color: #161616;
+
+  margin-top: auto;
+  padding: 4px 16px;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  cursor: pointer;
+
+  &:hover {
+    color: var(--primaryColor);
+  }
+
+  &__profile {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  &__settings {
+    color: inherit;
+    svg {
+      width: 13px;
+      height: 13px;
+    }
+  }
+}
