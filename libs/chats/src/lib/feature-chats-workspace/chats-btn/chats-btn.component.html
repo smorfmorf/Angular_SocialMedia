@@ -1,0 +1,23 @@
+@if(chat(); as chat){ @if(chat.userFrom.avatarUrl){
+<app-avatar class="size32" [avatarUrl]="chat.userFrom.avatarUrl" />
+} @else { <app-avatar class="size32" [chatUrl]="true" /> }
+
+<div class="message-wrapper">
+  <b class="chat-user">
+    {{ chat.userFrom.firstName }} {{ chat.userFrom.lastName }}
+
+    <span class="btn-date">
+      {{ chat.createdAt | date : 'HH:mm dd.MM.YYYY' }}
+    </span>
+  </b>
+
+  <div class="message-text">
+    <div class="mediumText">
+      {{ chat.message }}
+    </div>
+
+    <svg icon="chats" class="svg16" />
+  </div>
+</div>
+
+}

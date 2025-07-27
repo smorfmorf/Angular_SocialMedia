@@ -1,0 +1,95 @@
+.profile-page {
+  &__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 24px;
+  }
+
+  &__btn {
+    max-width: 200px;
+    text-decoration: none;
+
+    display: flex;
+    align-items: center;
+    gap: 4px;
+
+    svg {
+      width: 16px;
+      height: 16px;
+      color: var(--darkColor);
+    }
+  }
+
+  &__body {
+    display: grid;
+    grid-template-columns: 1fr 350px;
+    gap: 64px;
+    padding: 24px;
+  }
+}
+
+.subscribers {
+  &__title {
+    font-weight: 800;
+    font-size: 18px;
+    line-height: 24px;
+    margin-bottom: 16px;
+  }
+
+  &__list {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    margin-bottom: 32px;
+  }
+
+  &__avatar {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    &:hover {
+      scale: 1.1;
+    }
+  }
+
+  &__search {
+    position: relative;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background-color: white;
+    display: grid;
+    place-items: center;
+
+    &:hover {
+      scale: 1.1;
+    }
+
+    &::before,
+    &::after {
+      content: '';
+      position: absolute;
+      width: 2px;
+      height: 12px;
+      background: var(--darkColor);
+    }
+
+    &::after {
+      transform: rotate(90deg);
+    }
+  }
+
+  &__tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 32px;
+  }
+
+  &__description {
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 16px;
+  }
+}

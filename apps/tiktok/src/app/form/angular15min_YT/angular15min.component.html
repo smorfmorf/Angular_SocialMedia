@@ -1,0 +1,11 @@
+<p>angular15min works!</p>
+
+@switch (pageTitle()) { @case ('one') {
+<div>one</div>
+} @case ('two'){
+<div>two</div>
+} @default { } }
+
+<h2>{{ pageTitle() }}</h2>
+
+<app-children-component (yes)="onAnswerYes()" />

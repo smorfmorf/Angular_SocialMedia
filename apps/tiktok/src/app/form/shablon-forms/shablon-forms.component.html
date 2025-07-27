@@ -1,0 +1,64 @@
+<!--
+//? Шаблоные формы тоже самое что и Реактивные (просто метод взаимодействия другой) 
+
+form = new FormGroup({
+    username: new FormControl<string>('', Validators.required),
+    password: new FormControl<string>('', Validators.required),
+  });
+--------------------------------------------------------------------------------------------
+[] - биндим такой то атрибут к значению js 
+() - реагируем на какое-либо событие 
+[(ngModel)]="text"
+--------------------------------------------------------------------------------------------
+Любая form - по сути реактивная даже шаблоная - тк когда делаем import FormsModule, то сразу добавляется 
+@Директива которая вешается на тег form и добавляется доп логика (ищет контролы, создает FormGroup инстанс) 
+
+
+Когда form внутри себя видит ngModel - она их регистрирует как контролы и они попадают в form.value,
+Но если внутри формы контрол стоит отдельно от формы [ngModelOptions]="{ standalone: true }": 
+-->
+
+<!-- Теперь переменная #form хранит в себе данные формы -->
+<form #form="ngForm" (ngSubmit)="onSubmit(form)">
+  <!-- Этот инпут теперь не относится к форме (не попадает в form.value) -->
+  <input
+    noReactValidator
+    type="text"
+    class="tt-input"
+    [ngModel]="text"
+    (ngModelChange)="onChangeText($event)"
+    [ngModelOptions]="{ standalone: true }"
+    #textControl="ngModel"
+  />
+  {{ text }}
+  <hr />
+
+  <!--  @if(textControl.hasError('required')  -->
+  @if(textControl.hasError('noReact') ){
+  <span style="color: red">
+    Без React:
+    {{ textControl.getError('noReact').message | json }}
+  </span>
+  }
+  <input type="text" class="tt-input" name="name" [(ngModel)]="person.name" />
+  <input
+    type="text"
+    class="tt-input"
+    name="lastName"
+    [(ngModel)]="person.lastName"
+  />
+  <div ngModelGroup="address">
+    <input
+      type="text"
+      class="tt-input"
+      name="street"
+      [(ngModel)]="person.address.street"
+    />
+  </div>
+
+  <pre>
+ {{ person | json }}
+  </pre>
+
+  <button>Отправить</button>
+</form>

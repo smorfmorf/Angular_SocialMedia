@@ -1,0 +1,46 @@
+:host {
+  display: grid;
+  grid-template-columns: 32px 1fr;
+  gap: 16px;
+
+  &.isMyMessage {
+    grid-template-columns: max-content 32px;
+    justify-self: end;
+    .message-container {
+      order: -1;
+    }
+  }
+}
+.message-container {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.message-user {
+  font-weight: 700;
+  font-size: 12px;
+}
+.message-text {
+  border-radius: 5px;
+  padding: 8px 16px;
+  background-color: var(--darkMessage);
+  width: fit-content;
+  font-weight: 500px;
+  color: var(--lightColor);
+  clip-path: polygon(10px 0, 100% 0, 100% 100%, 0 100%, 0 10px);
+
+  cursor: pointer;
+
+  &:active {
+    transform: scale(1.1);
+  }
+}
+
+.btn-date {
+  position: relative;
+  bottom: -6px;
+  right: -11px;
+  font-size: 10px;
+  color: var(--lightTransparent);
+}

@@ -1,0 +1,21 @@
+<div class="chats-filters-input__wrapper">
+  <label class="tt-form-label" for="firstName">
+    <span class="tt-form-label__text">Имя</span>
+    <input
+      id="firstName"
+      type="text"
+      class="tt-form-input"
+      placeholder="Искать..."
+      [formControl]="filterChatsControl"
+    />
+  </label>
+</div>
+
+@for(chat of $chats | async; track chat.id){
+<app-chats-btn
+  [chat]="chat"
+  [routerLink]="[chat.id]"
+  [routerLinkActive]="'active'"
+/>
+}
+<!--   [routerLinkActive]="'active'" - добавляет класс active к компоненту -->

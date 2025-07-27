@@ -1,0 +1,153 @@
+<form [formGroup]="form" (ngSubmit)="onSubmit($event)">
+  <h2>Информация о доставке</h2>
+
+  <label for="type" class="tt-label">
+    Тип получателя
+    <select class="tt-input" formControlName="type">
+      <option [value]="selectOption.PERSON">Физическое лицо</option>
+      <option [value]="selectOption.LEGAL">Юридическое лицо</option>
+    </select>
+  </label>
+
+  <label for="name">
+    Имя:
+    <!-- по formControlName, добавляется несколько директив на этот элемент -->
+    <input
+      formControlName="name"
+      class="tt-input"
+      type="text"
+      id="name"
+      placeholder="Введите имя"
+    />
+    <small class="validation-error">Поле обязательное!!!</small>
+  </label>
+  <!-- Простые вещи можно делать проще через css (если дефолтные ошибки) -->
+  @if(form.controls.name.touched && form.controls.name.hasError('startsWith')){
+  <b style="color: red">
+    {{ form.controls.name.getError('startsWith') }}
+  </b>
+  }
+  <!-- Асинхроный валидатор  -->
+  @if(form.controls.name.touched && form.controls.name.hasError('nameValid')){
+  <b style="color: red">
+    {{ form.controls.name.getError('nameValid').message }}
+  </b>
+  }
+  <!--  -->
+
+  @if(form.controls.type.value === selectOption.LEGAL){
+  <label>
+    ИНН
+    <input
+      formControlName="inn"
+      type="text"
+      class="tt-input"
+      placeholder="Введите ИНН"
+    />
+  </label>
+  } @else {
+  <label>
+    Фамилия
+    <input
+      formControlName="lastName"
+      type="text"
+      class="tt-input"
+      placeholder="Введите фамилию"
+    />
+  </label>
+  }
+
+  <div
+    formGroupName="numbers"
+    style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px"
+  >
+    <label>
+      Домашний номер
+      <input class="tt-input" type="text" formControlName="home" />
+    </label>
+    <label>
+      Оффисный номер
+      <input class="tt-input" type="text" formControlName="office" />
+    </label>
+    <label style="grid-column: 1/3">
+      Библиотека Маскито заебись 😎
+      <input
+        class="tt-input"
+        placeholder="Maskito Mask Date dd/mm/yyyy"
+        [maskito]="options"
+      />
+    </label>
+  </div>
+
+  <hr style="margin: 20px 0" />
+  <div>
+    <div style="display: flex; justify-content: space-between">
+      <h2>Адрес доставки</h2>
+      <button class="btn" (click)="addAddress()">+</button>
+    </div>
+    @for( group of form.controls.addresses.controls; track group; let idx =
+    $index ) {
+    <div class="form-grid" [formGroup]="group">
+      <label for="street">
+        Город
+        <input formControlName="city" type="text" class="tt-input" />
+      </label>
+      <label>
+        Улица
+        <input formControlName="street" type="text" class="tt-input" />
+      </label>
+      <label>
+        Дом
+        <input formControlName="home" type="text" class="tt-input" />
+      </label>
+      <label>
+        Квартира
+        <input formControlName="room" type="text" class="tt-input" />
+      </label>
+
+      <button
+        (click)="deleteAddress(idx)"
+        class="btn"
+        type="submit"
+        style="grid-column: 1/3"
+      >
+        Удалить
+      </button>
+    </div>
+    }
+  </div>
+
+  <!--formGroup чтобы подключить форму в шаблоне,
+    formControlName для привязки инпуты к FormControl                                          -->
+  <div [formGroup]="form.controls.feature">
+    <h4>Способ оплаты</h4>
+
+    <div style="display: grid; gap: 10px">
+      @for(control of form.controls.feature.controls | keyvalue : sortFn; track
+      control; let idx = $index) {
+      <label>
+        {{ getFeaturesArray[idx].label }}
+        <input type="checkbox" [formControlName]="control.key" />
+      </label>
+      }
+    </div>
+  </div>
+
+  <div class="two-columns" [formGroup]="form.controls.dateRange">
+    <label>
+      От
+      <input formControlName="from" class="tt-input" type="date" />
+    </label>
+    <label>
+      До
+      <input formControlName="to" class="tt-input" type="date" />
+    </label>
+  </div>
+
+  @if(form.controls.dateRange.hasError('dateRange') &&
+  form.controls.dateRange.touched) {
+  <b style="color: red">Дата начала больше даты окончания</b>
+  }
+
+  <button class="btn" type="submit">Подтвердить</button>
+</form>

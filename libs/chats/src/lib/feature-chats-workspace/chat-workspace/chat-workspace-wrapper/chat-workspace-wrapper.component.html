@@ -1,0 +1,11 @@
+<div class="chat-wrapper" #wrapper>
+  @for (group of dateGroup(); track group) {
+  <div class="group-date">{{ group.date }}</div>
+  @for(message of group.messages; track message) {
+  <app-chat-message [message]="message" />
+  } }
+</div>
+
+<div>
+  <app-message-input (created)="onSendMessage($event)" />
+</div>

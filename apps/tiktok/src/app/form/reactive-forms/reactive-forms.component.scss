@@ -1,0 +1,51 @@
+form {
+  margin: 0 auto;
+  max-width: 400px;
+  display: grid;
+  gap: 5px;
+}
+
+.form-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  margin-bottom: 20px;
+}
+
+.tt-input.ng-invalid.ng-touched {
+  border-color: red;
+}
+// ----------------------------
+//! 6 состояний(классов) у любого Контрола
+//* этот механизм делает деректива которая тупо проставляет класс
+// 1 ng-untouched - непотроганный
+// 2 ng-pristine - девственный
+// 3 ng-invalid - невалидный
+
+// 4 ng-dirty - грязнен (чтото есть в нем)
+// 5 ng-valid - валиден
+// 6 ng-touched - убрали фокус (потрогали)
+.validation-error {
+  margin-top: 5px;
+  display: none;
+  color: red;
+}
+// + означает его сосед после input
+.tt-input.ng-invalid.ng-touched + .validation-error {
+  display: block;
+}
+// ----------------------------
+
+// .ng-submitted{} когда отправили форму добавляется класс
+
+.two-columns {
+  display: grid;
+  margin: 20px 0;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+
+.tt-input::-webkit-calendar-picker-indicator {
+  background-color: var(--primaryColor);
+  cursor: pointer;
+}

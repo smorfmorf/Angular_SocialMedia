@@ -1,0 +1,12 @@
+img {
+  display: block;
+  width: 112px;
+  height: 112px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+//если у хоста класс size32 тогда
+:host.size32 img {
+  width: 32px;
+  height: 32px;
+}
