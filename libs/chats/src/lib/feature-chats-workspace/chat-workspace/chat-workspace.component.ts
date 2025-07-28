@@ -2,7 +2,7 @@ import { Component, inject } from '@angular/core';
 import { ChatWorkspaceHeaderComponent } from './chat-workspace-header/chat-workspace-header.component';
 import { ChatWorkspaceWrapperComponent } from './chat-workspace-wrapper/chat-workspace-wrapper.component';
 import { ActivatedRoute, Router } from '@angular/router';
-import { filter, of, switchMap } from 'rxjs';
+import { filter, of, switchMap, tap } from 'rxjs';
 import { AsyncPipe } from '@angular/common';
 import { ChatsService } from '../../services/chats.service';
 
@@ -23,8 +23,11 @@ export class ChatWorkspaceComponent {
 
   $activeChat = this.route.params.pipe(
     switchMap(({ id }) => {
+      console.log('id: ', id);
+
       if (id === 'new') {
         return this.route.queryParams.pipe(
+          tap((params) => console.log('params_Tap: ', params)),
           filter(({ chatId }) => chatId),
           switchMap((params) => {
             return this.chatService.createChat(params['chatId']).pipe(

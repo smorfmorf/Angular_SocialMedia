@@ -11,7 +11,7 @@ import { provideEffects } from '@ngrx/effects';
 import { ProfileEffects } from 'libs/data-acsses/src/lib/store/actionts';
 
 // вся конфигурация роутов {path: 'путь' и компонент: который рендерим}
-// + нужно сказать где им рендерится <router-outlet></router-outlet>  там где он стоит там и рендерит компонент
+// + нужно сказать где им рендерится <router-outlet/> там где он стоит там и рендерит компонент
 export const routes: Routes = [
   {
     canActivate: [canActivateAuth], //* Защитник роута
@@ -20,12 +20,13 @@ export const routes: Routes = [
     children: [
       { path: '', redirectTo: 'profile/me', pathMatch: 'full' },
       // [routerLink]="['/profile', profile.id]">
-      { path: 'profile/:id', component: ProfileComponent }, 
+      { path: 'profile/:id', component: ProfileComponent },
       { path: 'settings', component: SettingsComponent },
       { path: 'search', component: SearchComponent },
       { path: 'chats', loadChildren: () => chatRoutes },
     ],
   },
+
   {
     path: 'login',
     component: LoginComponent,

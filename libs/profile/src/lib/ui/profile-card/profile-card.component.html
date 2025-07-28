@@ -30,7 +30,9 @@
       <lucide-angular size="20" [img]="UserCheck" class="my-icon" />
     </button>
 
-    <button class="btn btn-write" (click)="sendMessage" >Написать</button>
+    <button class="btn btn-write" (click)="sendMessage(profile.id)">
+      Написать
+    </button>
   </div>
 </div>
 } @else {
