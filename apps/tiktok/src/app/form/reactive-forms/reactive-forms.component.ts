@@ -1,5 +1,5 @@
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
-import { Component, inject } from '@angular/core';
+import { Component, inject, input, Input } from '@angular/core';
 import {
   AbstractControl,
   FormArray,
@@ -101,6 +101,15 @@ function validateDateRange_FormGroup({
   styleUrl: './reactive-forms.component.scss',
 })
 export class ReactiveFormsComponent {
+
+ text = input<number>()
+
+ ngOnInit(){
+    console.log(`txt ${typeof this.text()}`)
+
+ }
+
+
   //? Маскит библиотека от T-bank для патерна в input
   readonly options = maskitoDateOptionsGenerator({
     mode: 'dd/mm/yyyy',
@@ -173,6 +182,8 @@ export class ReactiveFormsComponent {
 
   getFeaturesArray = [] as any;
   constructor() {
+
+
     this.mokkyService
       .getAdresses()
       .pipe(takeUntilDestroyed())

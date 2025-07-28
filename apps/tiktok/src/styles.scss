@@ -40,7 +40,9 @@
   height: 16px;
 }
 //------------------------------------------------------------------
-
+html{
+  scroll-behavior: smooth;
+}
 body {
   font-family: 'JetBrains Mono', sans-serif;
   background-color: var(--darkColor);
@@ -96,6 +98,10 @@ body {
   cursor: pointer;
   border-radius: 5px;
   border: 1px solid var(--darkColor);
+
+  &-write{
+    background-color: rgb(206, 88, 206);
+  }
 
   &-shadow {
     position: relative;

@@ -1,4 +1,4 @@
-import { Component, inject, signal } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { ProfileCardComponent } from '../../../../../../libs/profile/src/lib/ui/profile-card/profile-card.component';
 import { ProfileService } from '../../../../../../libs/profile/src/lib/services/profile.service';
 import { ProfileFiltersComponent } from '../profile-filters/profile-filters.component';
@@ -17,7 +17,7 @@ export class SearchComponent {
   // profiles = this.ProfileService.filteredProfiles;
 
   store = inject(Store);
-  profiles = this.store.selectSignal(selectProfileFilters);
+  profiles = this.store.selectSignal((selectProfileFilters));
 
   // profiles: Profile[] = [];
   // constructor() {

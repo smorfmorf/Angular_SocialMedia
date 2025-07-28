@@ -1,8 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, HostListener } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import { ReactiveFormsComponent } from './lib/reactive-forms/reactive-forms.component';
-import { ShablonFormsComponent } from './lib/shablon-forms/shablon-forms.component';
-import { Angular15minComponent } from './lib/angular15min/angular15min.component';
+import { ReactiveFormsComponent } from './form/reactive-forms/reactive-forms.component';
+import { Angular15minComponent } from './form/angular15min_YT/angular15min.component';
+import { ShablonFormsComponent } from './form/shablon-forms/shablon-forms.component';
 
 @Component({
   selector: 'app-root',
@@ -17,4 +17,8 @@ import { Angular15minComponent } from './lib/angular15min/angular15min.component
 })
 export class AppComponent {
   title = 'tiktok';
+
+
+
+
 }

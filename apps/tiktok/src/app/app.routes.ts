@@ -19,7 +19,8 @@ export const routes: Routes = [
     component: LayoutComponent,
     children: [
       { path: '', redirectTo: 'profile/me', pathMatch: 'full' },
-      { path: 'profile/:id', component: ProfileComponent }, // [routerLink]="['/profile', profile.id]">
+      // [routerLink]="['/profile', profile.id]">
+      { path: 'profile/:id', component: ProfileComponent }, 
       { path: 'settings', component: SettingsComponent },
       { path: 'search', component: SearchComponent },
       { path: 'chats', loadChildren: () => chatRoutes },

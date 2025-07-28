@@ -1,5 +1,5 @@
-import { selectProfiles } from './../../../../../data-acsses/src/lib/store/selector';
-import { Component, inject, signal } from '@angular/core';
+import { prfoileActions, selectProfiles } from './../../../../../data-acsses/src/lib/store/selector';
+import { AfterViewInit, Component, ElementRef, inject, Renderer2, signal, ViewChild } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
@@ -14,9 +14,22 @@ import { Store } from '@ngrx/store';
   styleUrl: './login.component.scss',
   imports: [ReactiveFormsModule],
 })
-export class LoginComponent {
+export class LoginComponent implements AfterViewInit {
   store = inject(Store);
+  render2 = inject(Renderer2)
   userName = this.store.selectSignal(selectProfiles);
+
+
+  @ViewChild('refName') refName!: ElementRef
+
+    
+  handleClick(event: Event){
+    this.store.dispatch(prfoileActions.customEvents({name: String(new Date)}))
+  }
+
+  ngAfterViewInit(): void {
+    this.render2.listen(this.refName.nativeElement, 'click', (event)=> this.handleClick(event))
+  }
 
   authService = inject(AuthService);
   router = inject(Router);

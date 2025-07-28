@@ -16,22 +16,36 @@ export const prfoileActions = createActionGroup({
   },
 });
 
-//! Ассинхроный экшен (effect ловит экшен и возвращает новый)
+
 @Injectable({ providedIn: 'root' })
 export class ProfileEffects {
   profileService = inject(ProfileService);
   actions$ = inject(Actions);
 
-  // экшен на фильтр профайлов (когда произойдет filterEvents то будет запускаться этот эффект и тут можно делать асинхроные запросы)
-  filterProfiles = createEffect(() => {
+  filterProfiles = createEffect(()=>{
     return this.actions$.pipe(
       ofType(prfoileActions.filterEvents),
-      // делаем асинхроный запрос на бек
-      switchMap((payload) =>
-        this.profileService.filterProfiles(payload.filters)
-      ),
-      // и всю эту хуйню нужно превратить в экшен
-      map((res) => prfoileActions.profilesLoaded({ profiles: res.items }))
-    );
-  });
+      switchMap((payload)=>this.profileService.filterProfiles(payload.filters)),
+      map((res)=>prfoileActions.profilesLoaded({profiles:res.items}))
+    )
+  })
 }
+// //! Ассинхроный экшен/запрос (effect ловит экшен и возвращает новый)
+// @Injectable({ providedIn: 'root' })
+// export class ProfileEffects {
+//   profileService = inject(ProfileService);
+//   actions$ = inject(Actions);
+
+//   // экшен на фильтр профайлов (подписываемся на все экшены и когда произойдет filterEvent перехватываем его и запускаем этот эфект) 
+//   filterProfiles = createEffect(() => {
+//     return this.actions$.pipe(
+//       ofType(prfoileActions.filterEvents),
+//       // делаем асинхроный запрос на бек
+//       switchMap((payload) =>
+//         this.profileService.filterProfiles(payload.filters)
+//       ),
+//       // и всю эту хуйню нужно превратить в экшен типо диспатчим тут
+//       map((res) => prfoileActions.profilesLoaded({ profiles: res.items }))
+//     );
+//   });
+// }

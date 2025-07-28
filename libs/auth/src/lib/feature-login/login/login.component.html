@@ -1,5 +1,5 @@
 <form class="login-form" [formGroup]="form" (ngSubmit)="onSubmit($event)">
-  <h1 class="h1 mb60">Вход {{ userName() }}</h1>
+  <h1 class="h1 mb60" #refName>Вход {{ userName() }}</h1>
 
   <label class="tt-label mb16">
     Telegram username
@@ -46,4 +46,4 @@
   <button class="btn btn-shadow" type="submit">Войти</button>
 </form>
 
-<img src="/tiktok.svg" alt="" />
+<!-- <img src="/tiktok.svg" alt="" /> -->
