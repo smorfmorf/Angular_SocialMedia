@@ -11,6 +11,7 @@
     }
   }
 }
+
 .message-container {
   display: flex;
   flex-direction: column;
@@ -25,7 +26,7 @@
   border-radius: 5px;
   padding: 8px 16px;
   background-color: var(--darkMessage);
-  width: fit-content;
+  // width: fit-content;
   font-weight: 500px;
   color: var(--lightColor);
   clip-path: polygon(10px 0, 100% 0, 100% 100%, 0 100%, 0 10px);
