@@ -8,8 +8,8 @@ import { ChildrenComponentComponent } from './children-component/children-compon
   styleUrl: './angular15min.component.scss',
 })
 export class Angular15minComponent implements OnDestroy {
-  onAnswerYes() {
-    console.log('Ты скказала таносу дааааааааааа');
+  onAnswerYes(str: string) {
+    console.log(`Ты скказала таносу дааааааааааа ${str}`);
   }
 
   pageTitle = signal('Angular 15 min'); // реактивный сигнал
