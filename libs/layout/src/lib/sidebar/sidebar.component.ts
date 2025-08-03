@@ -1,4 +1,4 @@
-import { ProfileService } from '../../../../profile/src/lib/services/profile.service';
+import { ProfileService } from '../../../../data-acsses/src/lib/profile/profile.service';
 import { Component, inject } from '@angular/core';
 import { svg } from '../../../../common-ui/src/lib/components/svg/svg.component';
 import { RouterLink, RouterLinkActive } from '@angular/router';
@@ -44,7 +44,7 @@ export class SidebarComponent {
   ];
 
   ngOnInit(): void {
-    //* как можно не подписываясь выполнить запрос: Когда делаем подписку нужно сделать отписку. firstValueFrom - получаем Promise и он сам выполняется и потом "умирает".  
+    //* как можно не подписываясь выполнить запрос: Когда делаем подписку нужно сделать отписку. firstValueFrom - получаем Promise и он сам выполняется и потом "умирает".
     firstValueFrom(this.profileService.getMe());
   }
 }

@@ -1,6 +1,8 @@
-import { Profile } from '@tt/interfaces/profile';
 import { Component, effect, inject, ViewChild, viewChild } from '@angular/core';
-import { ProfileService } from '../../services/profile.service';
+import {
+  Profile,
+  ProfileService,
+} from '../../../../../data-acsses/src/lib/profile/profile.service';
 import {
   FormBuilder,
   FormControl,

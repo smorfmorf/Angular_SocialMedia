@@ -9,7 +9,7 @@ import {
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { AvatarComponent } from '../../../../../common-ui/src/lib/components/avatar/avatar.component';
-import { ProfileService } from '../../../../../profile/src/lib/services/profile.service';
+import { ProfileService } from '../../../../../data-acsses/src/lib/profile/profile.service';
 import { svg } from '@tt/common-ui';
 
 @Component({

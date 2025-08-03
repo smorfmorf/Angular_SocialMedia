@@ -1,4 +1,4 @@
-import { GlobalStoreService } from './../../../../../data-acsses/src/lib/global-store.service';
+import { ProfileService } from '@tt/data-acsses';
 import {
   Component,
   EventEmitter,
@@ -12,7 +12,7 @@ import { firstValueFrom } from 'rxjs';
 import { FormsModule } from '@angular/forms';
 import { AvatarComponent } from 'libs/common-ui/src/lib/components/avatar/avatar.component';
 import { svg } from 'libs/common-ui/src/lib/components/svg/svg.component';
-import { PostService } from '../../services/post.service';
+import { PostService } from '../../../../../data-acsses/src/lib/posts/post.service';
 
 @Component({
   selector: 'app-post-input',
@@ -21,8 +21,8 @@ import { PostService } from '../../services/post.service';
   styleUrl: './post-input.component.scss',
 })
 export class PostInputComponent {
-  // profile = inject(ProfileService).myAccount;
-  profile = inject(GlobalStoreService).myAccount;
+  profile = inject(ProfileService).myAccount;
+  // profile = inject(GlobalStoreService).myAccount;
 
   postService = inject(PostService);
   isCommentInput = input<boolean>(false);

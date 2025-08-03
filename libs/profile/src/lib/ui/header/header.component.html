@@ -7,6 +7,8 @@
   <h1 class="h4 userName__info-name">
     {{ profile()!.firstName }} {{ profile()!.lastName }}
   </h1>
-  <span class="regular"> {{ profile()!.username }} </span>
+  <span class="regular">
+    {{ profile()!.username }} id: {{ profile()!.id }}
+  </span>
 </div>
 }

@@ -1,11 +1,7 @@
-import {
-  HttpHandlerFn,
-  HttpInterceptorFn,
-  HttpRequest,
-} from '@angular/common/http';
+import { HttpInterceptorFn } from '@angular/common/http';
 import { inject } from '@angular/core';
-import { BehaviorSubject, catchError, switchMap, throwError } from 'rxjs';
-import { AuthService } from './auth.service';
+import { catchError, switchMap, throwError } from 'rxjs';
+import { AuthService } from '../../../../data-acsses/src/lib/auth/auth.service';
 // Логика проста refresh токен нужен для обновления access токена по истечении его срока действия.
 
 // 🧠Interceptor Каждый HTTP-запрос перехватывается (и проверяет токен).

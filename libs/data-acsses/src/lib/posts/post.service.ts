@@ -1,7 +1,7 @@
-import { Profile } from '@tt/interfaces/profile';
 import { HttpClient } from '@angular/common/http';
 import { inject, Injectable, signal } from '@angular/core';
 import { map, switchMap, tap } from 'rxjs';
+import { Profile } from '../profile/profile.service';
 
 export interface PostCreateDto {
   title: string;

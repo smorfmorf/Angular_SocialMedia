@@ -1,8 +1,19 @@
-import { GlobalStoreService } from './../../../../data-acsses/src/lib/global-store.service';
 import { HttpClient } from '@angular/common/http';
 import { inject, Injectable, signal } from '@angular/core';
 import { map, tap } from 'rxjs';
-import { Profile } from '@tt/interfaces/profile';
+
+export interface Profile {
+  id: number;
+  username: string;
+  avatarUrl: string | null;
+  subscribersAmount: number;
+  firstName: string;
+  lastName: string;
+  isActive: boolean;
+  stack: string[];
+  city: string;
+  description: string;
+}
 
 // Pageble
 export interface Subscribers {
@@ -19,7 +30,6 @@ export interface Subscribers {
 
 // тут описываем как общаемся с беком
 export class ProfileService {
-  private globalStoreService = inject(GlobalStoreService).myAccount;
   // inject - запросить что-то чтобы выводить
   http = inject(HttpClient);
   baseApiUrl = 'https://icherniakov.ru/yt-course/';
@@ -33,8 +43,7 @@ export class ProfileService {
   getMe() {
     return this.http
       .get<Profile>(`${this.baseApiUrl}account/me`)
-      .pipe(tap((val) => this.myAccount.set(val)))
-      .pipe(tap((val) => this.globalStoreService.set(val)));
+      .pipe(tap((val) => this.myAccount.set(val)));
   }
 
   getAccount(id: string) {

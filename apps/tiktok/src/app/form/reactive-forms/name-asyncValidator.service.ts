@@ -1,4 +1,3 @@
-import { Profile } from '@tt/interfaces/profile';
 import { HttpClient } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
 import {
@@ -6,6 +5,7 @@ import {
   AsyncValidator,
   ValidationErrors,
 } from '@angular/forms';
+import { Profile } from '@tt/data-acsses';
 import { map, Observable, firstValueFrom, delay } from 'rxjs';
 
 @Injectable({

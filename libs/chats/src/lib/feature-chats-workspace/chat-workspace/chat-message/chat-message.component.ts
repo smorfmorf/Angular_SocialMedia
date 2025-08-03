@@ -2,7 +2,7 @@ import { DateTimePipe } from './../../../../../../common-ui/src/lib/pipe/date-ti
 import { Component, HostBinding, input } from '@angular/core';
 import { DatePipe } from '@angular/common';
 import { AvatarComponent } from '@tt/common-ui';
-import { Message } from '../../../services/chats.service';
+import { Message } from '@tt/data-acsses';
 
 @Component({
   selector: 'app-chat-message',
@@ -15,7 +15,6 @@ export class ChatMessageComponent {
 
   @HostBinding('class.isMyMessage')
   get isMyMessage() {
-    console.log('getter');
     return this.message().isMyMessage;
   }
 }

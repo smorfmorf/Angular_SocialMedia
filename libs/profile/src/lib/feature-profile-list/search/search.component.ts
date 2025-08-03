@@ -1,9 +1,9 @@
+import { selectProfileFilters } from '@tt/data-acsses';
 import { Component, inject } from '@angular/core';
 import { ProfileCardComponent } from '../../../../../../libs/profile/src/lib/ui/profile-card/profile-card.component';
-import { ProfileService } from '../../../../../../libs/profile/src/lib/services/profile.service';
+import { ProfileService } from '../../../../../data-acsses/src/lib/profile/profile.service';
 import { ProfileFiltersComponent } from '../profile-filters/profile-filters.component';
 import { Store } from '@ngrx/store';
-import { selectProfileFilters } from '@tt/data-acsses';
 
 @Component({
   selector: 'app-search',
@@ -17,7 +17,7 @@ export class SearchComponent {
   // profiles = this.ProfileService.filteredProfiles;
 
   store = inject(Store);
-  profiles = this.store.selectSignal((selectProfileFilters));
+  profiles = this.store.selectSignal(selectProfileFilters);
 
   // profiles: Profile[] = [];
   // constructor() {

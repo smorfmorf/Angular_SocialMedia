@@ -2,7 +2,7 @@ import { Component, inject } from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { FormBuilder, ReactiveFormsModule } from '@angular/forms';
 import { debounceTime, startWith, switchMap } from 'rxjs';
-import { ProfileService } from '../../services/profile.service';
+import { ProfileService } from '../../../../../data-acsses/src/lib/profile/profile.service';
 import { prfoileActions } from 'libs/data-acsses/src/lib/store/actionts';
 import { Store } from '@ngrx/store';
 

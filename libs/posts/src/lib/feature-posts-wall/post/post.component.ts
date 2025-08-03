@@ -13,7 +13,11 @@ import { PostInputComponent } from '../../ui/post-input/post-input.component';
 import { CommonModule } from '@angular/common';
 import { firstValueFrom } from 'rxjs';
 import { CommentComponent } from '../../ui/comment/comment.component';
-import { Post, PostComment, PostService } from '../../services/post.service';
+import {
+  Post,
+  PostComment,
+  PostService,
+} from '../../../../../data-acsses/src/lib/posts/post.service';
 
 @Component({
   selector: 'app-post',

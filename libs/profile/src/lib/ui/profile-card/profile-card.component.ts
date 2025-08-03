@@ -1,8 +1,8 @@
-import { Profile } from '@tt/interfaces/profile';
 import { Component, inject, input, Input, signal } from '@angular/core';
 import { UserCheck, LucideAngularModule } from 'lucide-angular';
 import { ImgUrlPipe } from '@tt/common-ui';
 import { Router } from '@angular/router';
+import { Profile } from 'libs/data-acsses/src/lib/profile/profile.service';
 
 @Component({
   standalone: true,

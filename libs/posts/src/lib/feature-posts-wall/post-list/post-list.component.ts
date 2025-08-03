@@ -8,7 +8,7 @@ import {
 import { PostInputComponent } from '../../ui/post-input/post-input.component';
 import { PostComponent } from '../post/post.component';
 import { debounceTime, firstValueFrom, fromEvent } from 'rxjs';
-import { PostService } from '../../services/post.service';
+import { PostService } from '../../../../../data-acsses/src/lib/posts/post.service';
 
 @Component({
   selector: 'app-post-list',

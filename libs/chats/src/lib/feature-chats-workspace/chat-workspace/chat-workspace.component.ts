@@ -4,7 +4,7 @@ import { ChatWorkspaceWrapperComponent } from './chat-workspace-wrapper/chat-wor
 import { ActivatedRoute, Router } from '@angular/router';
 import { filter, of, switchMap, tap } from 'rxjs';
 import { AsyncPipe } from '@angular/common';
-import { ChatsService } from '../../services/chats.service';
+import { ChatsService } from '../../../../../data-acsses/src/lib/chats/chats.service';
 
 @Component({
   selector: 'app-chat-workspace',
@@ -28,9 +28,9 @@ export class ChatWorkspaceComponent {
       if (id === 'new') {
         return this.route.queryParams.pipe(
           tap((params) => console.log('params_Tap: ', params)),
-          filter(({ chatId }) => chatId),
+          filter(({ profile_Id }) => profile_Id),
           switchMap((params) => {
-            return this.chatService.createChat(params['chatId']).pipe(
+            return this.chatService.createChat(params['profile_Id']).pipe(
               switchMap((chat) => {
                 this.router.navigate(['/chats', chat.id]);
                 return of(null);

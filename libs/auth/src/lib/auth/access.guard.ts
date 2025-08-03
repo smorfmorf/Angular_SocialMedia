@@ -1,6 +1,6 @@
 import { inject } from '@angular/core';
 import { Router } from '@angular/router';
-import { AuthService } from './auth.service';
+import { AuthService } from '../../../../data-acsses/src/lib/auth/auth.service';
 
 // Защитник маршрутов проверяет залогинился пользователь или нет.
 export function canActivateAuth() {

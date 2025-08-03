@@ -1,5 +1,5 @@
 import { PostListComponent } from '@tt/posts';
-import { ProfileService } from '../../services/profile.service';
+import { ProfileService } from '../../../../../data-acsses/src/lib/profile/profile.service';
 import { Component, inject, signal } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { switchMap, tap, firstValueFrom } from 'rxjs';
@@ -51,7 +51,7 @@ export class ProfileComponent {
     // this.router.navigate(['/chats', res.id]);
 
     this.router.navigate(['/chats', 'new'], {
-      queryParams: { chatId: id },
+      queryParams: { profile_Id: id },
     });
   }
 

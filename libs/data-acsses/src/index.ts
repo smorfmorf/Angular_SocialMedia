@@ -1,3 +1,7 @@
-export { GlobalStoreService } from './lib/global-store.service';
 export { selectProfiles } from './lib/store/selector';
 export { selectProfileFilters } from './lib/store/selector';
+
+export type { Profile } from './lib/profile/profile.service';
+export { ProfileService } from './lib/profile/profile.service';
+
+export type { Message } from './lib/chats/chats.service';

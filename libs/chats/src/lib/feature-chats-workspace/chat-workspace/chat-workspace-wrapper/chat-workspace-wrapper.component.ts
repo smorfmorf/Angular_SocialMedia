@@ -12,10 +12,14 @@ import { ChatMessageComponent } from '../chat-message/chat-message.component';
 
 import { debounceTime, firstValueFrom, fromEvent } from 'rxjs';
 import { DateTime } from 'luxon';
-import { Chat, ChatsService, Message } from '../../../services/chats.service';
+import {
+  Chat,
+  ChatsService,
+  Message,
+} from '../../../../../../data-acsses/src/lib/chats/chats.service';
 import { MessageInputComponent } from '../../../ui/message-input/message-input.component';
 
-interface GroupDate {
+export interface GroupDate {
   date: string;
   messages: Message[];
 }
@@ -29,18 +33,17 @@ interface GroupDate {
 export class ChatWorkspaceWrapperComponent {
   chatService = inject(ChatsService);
   chat = input.required<Chat>();
-
   hostElement = inject(ElementRef);
 
-  messages = signal<Message[]>([]);
+  messages = inject(ChatsService).activeChatMessage;
+  // messages = signal<Message[]>([]);
   dateGroup = signal<GroupDate[]>([]);
 
   // при переходе на другой чат сбрасываем сообщения
   constructor() {
     effect(() => {
-      console.log('wd', this.hostElement.nativeElement);
       console.log(this.chat().messages);
-      this.messages.set(this.chat().messages);
+      // this.messages.set(this.chat().messages);
       this.dateGroup.set(this.groupByDate(this.messages()));
       console.log('dateGroup: ', this.dateGroup());
     });
@@ -53,7 +56,8 @@ export class ChatWorkspaceWrapperComponent {
       // const dateKey = new Date(message.createdAt).toISOString().split('T')[0];
       const local = Intl.DateTimeFormat().resolvedOptions().timeZone;
 
-      const dt = DateTime.fromISO(message.createdAt, { zone: 'utc' }) // указываем, что это UTC
+      const isoString = message.createdAt.replace(' ', 'T');
+      const dt = DateTime.fromISO(isoString, { zone: 'utc' })
         .setZone(local)
         .toFormat('dd.MM.yyyy HH:mm')
         .split(' ')[0]; // или 'Asia/Srednekolymsk' — ближе к Хабаровску
@@ -74,15 +78,18 @@ export class ChatWorkspaceWrapperComponent {
   }
 
   async onSendMessage(message: string) {
-    await firstValueFrom(this.chatService.sendMessage(this.chat().id, message));
+    console.log('message: ', message);
+    this.chatService.wsAdapter.sendMessage(message, this.chat().id);
 
-    firstValueFrom(this.chatService.getChatById(this.chat().id)).then(
-      (chat) => {
-        console.log('chat: ', chat);
-        this.messages.set(chat.messages);
-        this.dateGroup.set(this.groupByDate(this.messages()));
-      }
-    );
+    //! если используем с вариантом activeChatMessage(все сообщение чата из сервиса) тогда это в комент
+    // await firstValueFrom(this.chatService.getChatById(this.chat().id));
+    // await firstValueFrom(this.chatService.sendMessage(this.chat().id, message));
+    // .firstValueFrom(this.chatService.getChatById(this.chat().id));
+    // .then((chat) => {
+    //   console.log('chat: ', chat);
+    //   this.messages.set(chat.messages);
+    //   this.dateGroup.set(this.groupByDate(this.messages()));
+    // });
   }
 
   render2 = inject(Renderer2);

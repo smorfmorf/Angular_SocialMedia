@@ -1,7 +1,7 @@
 import { debounce, debounceTime, map, startWith, switchMap } from 'rxjs';
 import { Component, inject, effect } from '@angular/core';
 import { ChatsBtnComponent } from '../chats-btn/chats-btn.component';
-import { ChatsService } from '../../services/chats.service';
+import { ChatsService } from '../../../../../data-acsses/src/lib/chats/chats.service';
 import { AsyncPipe, NgClass } from '@angular/common';
 import { RouterLink, RouterLinkActive } from '@angular/router';
 import { FormControl } from '@angular/forms';
