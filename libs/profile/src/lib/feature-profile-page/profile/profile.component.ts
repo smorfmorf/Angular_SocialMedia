@@ -50,6 +50,7 @@ export class ProfileComponent {
     // const res = await firstValueFrom(this.chatService.createChat(id));
     // this.router.navigate(['/chats', res.id]);
 
+    // /chats/new?profile_Id=123
     this.router.navigate(['/chats', 'new'], {
       queryParams: { profile_Id: id },
     });

@@ -4,6 +4,7 @@ import { HttpClient } from '@angular/common/http';
 import { inject, Injectable, signal, effect } from '@angular/core';
 import { Profile, ProfileService } from '../profile/profile.service';
 import { map, tap } from 'rxjs';
+import { ChatWsMessage } from './chat-webSocket-interface';
 
 export interface myChat {
   id: number;
@@ -45,8 +46,15 @@ export class ChatsService {
   wsAdapter: ChatWsService = new ChatWsNativeService();
 
   // Обработчик сообщения от WebSocket
-  handle_WebSocket_Message(message: any) {
+  handle_WebSocket_Message(message: ChatWsMessage) {
     console.log('message$: ', message);
+
+    if (!('action' in message)) {
+      return; //!typeGuard - сужение типов Middle штука
+    }
+    if (message.action === 'unread') {
+      console.log('✌️message.data.count --->', message.data.count);
+    }
     if (message.action === 'message') {
       this.activeChatMessage.set([
         ...this.activeChatMessage(),

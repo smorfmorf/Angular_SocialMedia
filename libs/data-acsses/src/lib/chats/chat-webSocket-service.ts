@@ -1,13 +1,16 @@
+import { Observable } from 'rxjs';
+import { ChatWsMessage } from './chat-webSocket-interface';
+
 export interface ChatWsService {
   // создать канал, метод для отпраки сообщений и дисконект
-  connect: (params: ChatConnectionWSParams) => void;
+  connect: (params: ChatConnectionWSParams) => void | Observable<ChatWsMessage>;
   sendMessage: (text: string, chatId: number) => void;
   disconnect: () => void;
 }
 export interface ChatConnectionWSParams {
   url: string;
   token: string;
-  handleMessage(message: string): void;
+  handleMessage(message: ChatWsMessage): void;
 }
 
 export class ChatWsNativeService implements ChatWsService {

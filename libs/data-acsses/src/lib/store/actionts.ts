@@ -19,15 +19,15 @@ export const prfoileActions = createActionGroup({
 @Injectable({ providedIn: 'root' })
 export class ProfileEffects {
   profileService = inject(ProfileService);
-  actions$ = inject(Actions);
-  // экшен на фильтр профайлов (подписываемся на все экшены и когда произойдет action filterEvent перехватываем его и запускаем этот эфект)
+  actions$ = inject(Actions); //(поток экшенов на него тоже можем подписаться ;D)
+  // экшен на фильтр профайлов (подписываемся на все экшены и когда придет нужный, перехватываем его и запускаем эфект)
   filterProfiles = createEffect(() => {
     return this.actions$.pipe(
       ofType(prfoileActions.filterEvents),
       switchMap((payload) =>
         this.profileService.filterProfiles(payload.filters)
       ),
-      // и тут типо делаем диспатч нового экшена - передача в reducer
+      // и тут типо делаем диспатч: нового экшена + данные - передача в reducer на обработку
       map((res) => prfoileActions.profilesLoaded({ profiles: res.items }))
     );
   });
