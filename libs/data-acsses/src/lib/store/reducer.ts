@@ -6,12 +6,16 @@ export interface ProfileState {
   profiles: Profile[];
   profileFilters: Record<string, any>;
   userName: string;
+  page: number;
+  size: number;
 }
 
 export const initialState: ProfileState = {
   profiles: [],
   profileFilters: {},
   userName: 'user: ???',
+  page: 1,
+  size: 10,
 };
 
 // store

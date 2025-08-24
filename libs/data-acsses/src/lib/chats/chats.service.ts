@@ -77,6 +77,7 @@ export class ChatsService {
   }
   // соединение с вебсокетом
   connectWebSocket() {
+    // если через rxjs то тут нужно вернуть его и подписаться где юзаем
     this.wsAdapter.connect({
       url: `${this.baseApiUrl}chat/ws`,
       token: this.authService.token ?? '',

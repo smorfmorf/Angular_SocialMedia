@@ -27,7 +27,7 @@ export class ProfileFiltersComponent {
       .pipe(
         startWith({}),
         debounceTime(300),
-        // меняем стрим чтобы сделать поиск на беке
+        // меняем стрим чтобы сделать поиск на беке (локально без NgRX)
         // switchMap((val) => {
         // return this.ProfileService.filterProfiles(val);
         // }),
