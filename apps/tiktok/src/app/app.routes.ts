@@ -22,7 +22,14 @@ export const routes: Routes = [
       // [routerLink]="['/profile', profile.id]">
       { path: 'profile/:id', component: ProfileComponent },
       { path: 'settings', component: SettingsComponent },
-      { path: 'search', component: SearchComponent },
+      {
+        path: 'search',
+        component: SearchComponent,
+        providers: [
+          provideState(profileFeature),
+          provideEffects(ProfileEffects),
+        ],
+      },
       { path: 'chats', loadChildren: () => chatRoutes },
     ],
   },

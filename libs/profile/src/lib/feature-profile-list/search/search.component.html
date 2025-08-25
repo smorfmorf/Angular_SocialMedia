@@ -1,7 +1,27 @@
 <app-profile-filters />
 
-<div class="profile-card-wrapper">
-  @for (profile of profiles(); track profile.id) {
-  <app-profile-card [profile]="profile" [max]="'trueaw'" />
+<div
+  class="profile-card-wrapper"
+  waIntersectionObserver
+  waIntersectionThreshold="0.5"
+>
+  @for (profile of profiles(); track profile.id; let last = $last) {
+  <!-- <app-profile-card [profile]="profile" [max]="'trueaw'" /> -->
+  <app-profile-card
+    [profile]="profile"
+    [max]="'trueaw'"
+    (waIntersectionObservee)="last && onIntersection($event)"
+  />
+
   }
 </div>
+
+<!--
+@if(last){
+ @defer(on viewport){
+<lib-infinity-scroll-trigger (loaded)="timeToFetch()" />
+}@placeholder {
+<div></div>
+}} -->
+
+<!-- defer - лениво загружает какие-то блоки (ангуляр выносит при компиляции в отдельный chank и грузит только когда нужно ) -->
