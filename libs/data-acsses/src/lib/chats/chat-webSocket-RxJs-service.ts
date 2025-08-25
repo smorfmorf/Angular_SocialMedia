@@ -18,7 +18,7 @@ export class ChatWsRxJsService implements ChatWsService {
       });
     }
 
-    // делаем сокет, паймим его и вконце нужно подписаться и желательно отписаться
+    // делаем WebSocket, паймим его и вконце нужно подписаться и желательно отписаться (где вызываем его)
     return this.socket.asObservable().pipe(
       tap((message) => params.handleMessage(message)),
       finalize(() => {
@@ -27,6 +27,7 @@ export class ChatWsRxJsService implements ChatWsService {
     );
   }
 
+  // не pipe, а next тк в Subject отправляем с Next
   sendMessage(text: string, chatId: number) {
     this.socket?.next({
       text,
@@ -37,5 +38,3 @@ export class ChatWsRxJsService implements ChatWsService {
     this.socket?.complete();
   }
 }
-
-// RxJs - есть поток данных моыжет чтото приходить и тд идеально с вебсокетом (поток данных)

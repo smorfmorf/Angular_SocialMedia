@@ -20,6 +20,7 @@ export class ChatWsNativeService implements ChatWsService {
     if (this.socket) {
       return;
     }
+
     // массив с авторизационной инфой
     // this.socket = new WebSocket('ws://localhost:3000', ['authToken']);
     this.socket = new WebSocket(params.url, [params.token]);

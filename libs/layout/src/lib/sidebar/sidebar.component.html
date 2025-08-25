@@ -10,7 +10,10 @@
     >
       <a class="menu__btn">
         <svg [icon]="menuItem.icon"></svg>
-        <b>{{ menuItem.label }}</b>
+        <b>{{ menuItem.label }} </b>
+        @if(menuItem.count ) {
+        {{ menuItem.count() > 0 ? menuItem.count() : '' }}
+        }
       </a>
     </li>
     }

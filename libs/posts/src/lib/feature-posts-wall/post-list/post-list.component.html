@@ -1,6 +1,6 @@
 <app-post-input></app-post-input>
 
-<div #wrapper class="wrapper">
+<div class="wrapper" #wrapper>
   @for(post of posts(); track post.id){
   <app-post [post]="post" />
   }

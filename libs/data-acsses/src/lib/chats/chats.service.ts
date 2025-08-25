@@ -44,6 +44,9 @@ export class ChatsService {
 
   // патерн композиция
   wsAdapter: ChatWsService = new ChatWsNativeService();
+  UnreadMessages = signal(0);
+  //! можно такой вариант использовать типо получить сообщения из конкретного чата, расширить поля в нем, завести global state и его отрендерить.
+  activeChatMessage = signal<Message[]>([]);
 
   // Обработчик сообщения от WebSocket
   handle_WebSocket_Message(message: ChatWsMessage) {
@@ -53,7 +56,8 @@ export class ChatsService {
       return; //!typeGuard - сужение типов Middle штука
     }
     if (message.action === 'unread') {
-      console.log('✌️message.data.count --->', message.data.count);
+      console.log('✌️кол-во непрочитанных --->', message.data);
+      this.UnreadMessages.set(message.data.count);
     }
     if (message.action === 'message') {
       this.activeChatMessage.set([
@@ -70,13 +74,10 @@ export class ChatsService {
         },
       ]);
     }
-
-    if (message.action === 'unread') {
-      console.log(`кол-во непрочитанных ${message.data.count}`);
-    }
   }
   // соединение с вебсокетом
   connectWebSocket() {
+    // return если RxJS
     this.wsAdapter.connect({
       url: `${this.baseApiUrl}chat/ws`,
       token: this.authService.token ?? '',
@@ -91,9 +92,6 @@ export class ChatsService {
   getMyChats() {
     return this.http.get<myChat[]>(`${this.baseApiUrl}chat/get_my_chats/`);
   }
-
-  //! можно такой вариант использовать типо получить сообщения из конкретного чата, расширить поля в нем, завести global state и его отрендерить.
-  activeChatMessage = signal<Message[]>([]);
 
   getChatById(chatId: number) {
     return this.http.get<Chat>(`${this.baseApiUrl}chat/${chatId}`).pipe(

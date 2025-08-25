@@ -6,6 +6,7 @@ import { SubscriberCardComponent } from '../subscriber-card/subscriber-card.comp
 import { AsyncPipe } from '@angular/common';
 import { firstValueFrom } from 'rxjs';
 import { ImgUrlPipe } from '@tt/common-ui';
+import { ChatsService } from '@tt/data-acsses';
 @Component({
   selector: 'app-sidebar',
   imports: [
@@ -25,6 +26,9 @@ export class SidebarComponent {
   $subscribers = this.profileService.getSubscribers(3);
   myAccount = this.profileService.myAccount;
 
+  unreadMessageWebSocket = inject(ChatsService).UnreadMessages;
+  chatService = inject(ChatsService);
+
   menuItems = [
     {
       label: 'Моя страница',
@@ -40,11 +44,14 @@ export class SidebarComponent {
       label: 'Чаты',
       icon: 'chats',
       link: '/chats',
+      count: this.unreadMessageWebSocket,
     },
   ];
 
   ngOnInit(): void {
     //* как можно не подписываясь выполнить запрос: Когда делаем подписку нужно сделать отписку. firstValueFrom - получаем Promise и он сам выполняется и потом "умирает".
     firstValueFrom(this.profileService.getMe());
+
+    this.chatService.connectWebSocket();
   }
 }

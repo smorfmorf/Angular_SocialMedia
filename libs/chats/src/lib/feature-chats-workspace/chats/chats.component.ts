@@ -8,10 +8,4 @@ import { ChatsService } from '../../../../../data-acsses/src/lib/chats/chats.ser
   templateUrl: './chats.component.html',
   styleUrl: './chats.component.scss',
 })
-export class ChatsComponent {
-  chatService = inject(ChatsService);
-
-  ngOnInit() {
-    this.chatService.connectWebSocket();
-  }
-}
+export class ChatsComponent {}

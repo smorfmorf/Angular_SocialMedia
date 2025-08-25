@@ -27,8 +27,7 @@ export class PostInputComponent {
   postService = inject(PostService);
   isCommentInput = input<boolean>(false);
   postId = input<number>(0);
-
-  postText = '';
+  postText = ''; // v-model
 
   //! в Angular стили меняем через render (зачем она нужна - тк ангуляр можно сконвертнуть под мобилку, desktop, терменал-оплаты и там может быть не браузер а доступ к другим элементам)
   render = inject(Renderer2);
@@ -38,6 +37,7 @@ export class PostInputComponent {
     this.render.setStyle(textarea, 'height', textarea.scrollHeight + 'px');
   }
 
+  // параметр для Emit to parent
   @Output() created = new EventEmitter();
 
   onCreatePost() {
@@ -54,9 +54,9 @@ export class PostInputComponent {
         this.postText = '';
         this.created.emit();
       });
-
       return;
     }
+
     firstValueFrom(
       this.postService.createPost({
         title: 'Новый пост',
