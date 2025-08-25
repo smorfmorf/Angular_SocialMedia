@@ -22,7 +22,7 @@ export class ProfileCardComponent {
     // const res = await firstValueFrom(this.chatService.createChat(id));
     // this.router.navigate(['/chats', res.id]);
     this.router.navigate(['/chats', 'new'], {
-      queryParams: { chatId: id },
+      queryParams: { profile_Id: id },
     });
   }
 }

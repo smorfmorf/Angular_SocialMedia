@@ -6,6 +6,10 @@ import { ProfileFiltersComponent } from '../profile-filters/profile-filters.comp
 import { Store } from '@ngrx/store';
 import { InfinityScrollTriggerComponent } from '../../../../../common-ui/src/lib/components/infinity-scroll-trigger/infinity-scroll-trigger.component';
 import { prfoileActions } from 'libs/data-acsses/src/lib/store/actionts';
+import {
+  WaIntersectionObserverDirective,
+  WaIntersectionObservee,
+} from '@ng-web-apis/intersection-observer';
 
 @Component({
   selector: 'app-search',
@@ -15,6 +19,8 @@ import { prfoileActions } from 'libs/data-acsses/src/lib/store/actionts';
     ProfileCardComponent,
     ProfileFiltersComponent,
     InfinityScrollTriggerComponent,
+    WaIntersectionObserverDirective,
+    WaIntersectionObservee,
   ],
 })
 export class SearchComponent {
@@ -35,10 +41,10 @@ export class SearchComponent {
     this.store.dispatch(prfoileActions.setPage({}));
   }
 
-  onIntersection(entries: any) {
-    console.log('✌️entries --->', entries);
-    const entry = entries[0];
-    if (entry.isIntersecting) {
+  onIntersection(entries: IntersectionObserverEntry[]) {
+    console.log('✌️✌️entries --->', entries);
+    if (entries.length === 0) return;
+    if (entries[0].intersectionRatio > 0) {
       this.timeToFetch();
     }
   }
