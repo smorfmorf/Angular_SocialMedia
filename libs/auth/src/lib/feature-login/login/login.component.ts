@@ -1,34 +1,53 @@
-import { prfoileActions, selectProfiles } from './../../../../../data-acsses/src/lib/store/selector';
-import { AfterViewInit, Component, ElementRef, inject, Renderer2, signal, ViewChild } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import {
+  prfoileActions,
+  selectProfiles,
+} from './../../../../../data-acsses/src/lib/store/selector';
+import {
+  AfterViewInit,
+  Component,
+  ElementRef,
+  inject,
+  Renderer2,
+  signal,
+  ViewChild,
+} from '@angular/core';
+import {
+  FormControl,
+  FormGroup,
+  Validators,
+  FormsModule,
+} from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
 import { from, map, take, delay, tap } from 'rxjs';
 
 import { AuthService } from '@tt/auth';
 import { Store } from '@ngrx/store';
+import { TtInputComponent } from '@tt/common-ui';
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrl: './login.component.scss',
-  imports: [ReactiveFormsModule],
+  imports: [ReactiveFormsModule, TtInputComponent, FormsModule],
 })
 export class LoginComponent implements AfterViewInit {
   store = inject(Store);
-  render2 = inject(Renderer2)
+  render2 = inject(Renderer2);
   userName = this.store.selectSignal(selectProfiles);
 
+  @ViewChild('refName') refName!: ElementRef;
 
-  @ViewChild('refName') refName!: ElementRef
-
-    
-  handleClick(event: Event){
-    this.store.dispatch(prfoileActions.customEvents({name: String(new Date)}))
+  handleClick(event: Event) {
+    this.store.dispatch(
+      prfoileActions.customEvents({ name: String(new Date()) })
+    );
   }
 
   ngAfterViewInit(): void {
-    this.render2.listen(this.refName.nativeElement, 'click', (event)=> this.handleClick(event))
+    this.render2.listen(this.refName.nativeElement, 'click', (event) =>
+      this.handleClick(event)
+    );
   }
 
   authService = inject(AuthService);
@@ -36,8 +55,8 @@ export class LoginComponent implements AfterViewInit {
   isPasswordVisible = signal<boolean>(false);
 
   form = new FormGroup({
-    username: new FormControl<string | ''>('', Validators.required),
-    password: new FormControl<string | ''>('', Validators.required),
+    username: new FormControl<string | null>(null, Validators.required),
+    password: new FormControl<string | null>(null, Validators.required),
   });
 
   onSubmit(event: Event) {
@@ -73,5 +92,7 @@ export class LoginComponent implements AfterViewInit {
 
       // подписка на стрим
       .subscribe((val) => console.log(val));
+
+    this.form.valueChanges.subscribe((val) => console.log(val));
   }
 }

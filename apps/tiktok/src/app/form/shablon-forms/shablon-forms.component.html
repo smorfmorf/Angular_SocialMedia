@@ -10,13 +10,12 @@ form = new FormGroup({
 () - реагируем на какое-либо событие 
 [(ngModel)]="text"
 --------------------------------------------------------------------------------------------
-Любая form - по сути реактивная даже шаблоная - тк когда делаем import FormsModule, то сразу добавляется 
+Любая form - по сути реактивная, даже шаблоная - тк когда делаем import FormsModule, то сразу добавляется 
 @Директива которая вешается на тег form и добавляется доп логика (ищет контролы, создает FormGroup инстанс) 
 
 
 Когда form внутри себя видит ngModel - она их регистрирует как контролы и они попадают в form.value,
-Но если внутри формы контрол стоит отдельно от формы [ngModelOptions]="{ standalone: true }": 
--->
+Но если внутри формы контрол стоит отдельно от формы тогда делаем так => [ngModelOptions]="{ standalone: true }"-->
 
 <!-- Теперь переменная #form хранит в себе данные формы -->
 <form #form="ngForm" (ngSubmit)="onSubmit(form)">
@@ -32,7 +31,6 @@ form = new FormGroup({
   />
   {{ text }}
   <hr />
-
   <!--  @if(textControl.hasError('required')  -->
   @if(textControl.hasError('noReact') ){
   <span style="color: red">
@@ -40,6 +38,7 @@ form = new FormGroup({
     {{ textControl.getError('noReact').message | json }}
   </span>
   }
+
   <input type="text" class="tt-input" name="name" [(ngModel)]="person.name" />
   <input
     type="text"

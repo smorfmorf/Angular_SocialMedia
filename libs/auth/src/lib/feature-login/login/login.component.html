@@ -1,7 +1,7 @@
 <form class="login-form" [formGroup]="form" (ngSubmit)="onSubmit($event)">
   <h1 class="h1 mb60" #refName>Вход {{ userName() }}</h1>
 
-  <label class="tt-label mb16">
+  <!-- <label class="tt-label mb16">
     Telegram username
     <input
       formControlName="username"
@@ -9,7 +9,10 @@
       type="text"
       placeholder="Введите логин"
     />
-  </label>
+  </label> -->
+
+  <!-- ValueAccessor = мост между Angular Forms и твоим компонентом. -->
+  <lib-tt-input formControlName="username"> Мой кастомный </lib-tt-input>
 
   <label class="tt-label mb32">
     Пароль
