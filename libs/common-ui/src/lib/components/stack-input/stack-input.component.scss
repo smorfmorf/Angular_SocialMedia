@@ -1,0 +1,39 @@
+.stack-btn__delete {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: white;
+
+  svg {
+    color: wheat;
+  }
+}
+
+.stack-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.stack-control {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+
+  border-bottom: 1px solid beige;
+  padding: 12px 0px;
+  gap: 12px;
+}
+
+.stack-ghost-input {
+  font-weight: 500;
+  font-size: 18px;
+  outline: none;
+  background-color: rgb(43, 43, 43);
+  border: none;
+  padding: 12px 0px;
+  color: white;
+  font-family: 'JetBrains Mono', sans-serif;
+  flex: 1;
+}

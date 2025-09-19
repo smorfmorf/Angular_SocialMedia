@@ -12,10 +12,16 @@ import {
 import { firstValueFrom } from 'rxjs';
 import { HeaderComponent } from '../../ui/header/header.component';
 import { AvatarUploadComponent } from '../../ui/avatar-upload/avatar-upload.component';
+import { StackInputComponent } from '@tt/common-ui';
 
 @Component({
   selector: 'app-settings',
-  imports: [HeaderComponent, ReactiveFormsModule, AvatarUploadComponent],
+  imports: [
+    HeaderComponent,
+    ReactiveFormsModule,
+    AvatarUploadComponent,
+    StackInputComponent,
+  ],
   templateUrl: './settings.component.html',
   styleUrl: './settings.component.scss',
 })
@@ -41,10 +47,10 @@ export class SettingsComponent {
     effect(() => {
       console.log(this.profile());
 
+      //@ts-ignore
       this.form.patchValue({
         ...this.profile(),
-        //@ts-ignore
-        stack: this.mergeStack(this.profile()?.stack),
+        // stack: this.mergeStack(this.profile()?.stack),
       });
     });
   }
@@ -64,21 +70,24 @@ export class SettingsComponent {
       );
     }
 
+    console.log(this.form.value);
+
     //@ts-ignore
     firstValueFrom(
       this.profileService.patchProfile({
         ...this.form.value,
-        stack: this.splitStack(this.form.value.stack),
+        // stack: this.splitStack(this.form.value.stack),
       } as Partial<Profile>)
     );
   }
 
-  splitStack(stack: string | null | string[] | undefined) {
-    if (Array.isArray(stack)) return stack;
-    return stack ? stack.split(',') : [];
-  }
-  mergeStack(stack: string | null | string[] | undefined) {
-    if (Array.isArray(stack)) return stack.join(',');
-    return stack;
-  }
+  //! Хелпер можно удалить
+  // splitStack(stack: string | null | string[] | undefined) {
+  //   if (Array.isArray(stack)) return stack;
+  //   return stack ? stack.split(',') : [];
+  // }
+  // mergeStack(stack: string | null | string[] | undefined) {
+  //   if (Array.isArray(stack)) return stack.join(',');
+  //   return stack;
+  // }
 }

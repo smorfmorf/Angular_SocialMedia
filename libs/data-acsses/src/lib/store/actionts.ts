@@ -32,11 +32,13 @@ export class ProfileEffects {
   filterProfiles = createEffect(() => {
     return this.actions$.pipe(
       ofType(prfoileActions.filterEvents, prfoileActions.setPage),
+      // делает массив из двух экшенов
       withLatestFrom(
         this.store.select(selectProfilePage),
         this.store.select(selectFilters)
       ),
       switchMap(([_, page, filters]) => {
+        // Вызов функции с Backend
         return this.profileService.filterProfiles({
           ...page,
           ...filters,

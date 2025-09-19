@@ -41,7 +41,10 @@ export const profileFeature = createFeature({
 
     on(prfoileActions.setPage, (state, payload) => {
       let page = payload.page;
-      if (!page) page = state.page + 1;
+
+      if (!page) {
+        page = state.page + 1;
+      }
 
       return {
         ...state,
