@@ -37,3 +37,10 @@
   font-family: 'JetBrains Mono', sans-serif;
   flex: 1;
 }
+
+:host.disabled {
+  .stack-control {
+    opacity: 0.5;
+    pointer-events: none;
+  }
+}

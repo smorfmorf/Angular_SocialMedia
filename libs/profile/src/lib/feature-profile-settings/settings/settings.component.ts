@@ -39,7 +39,7 @@ export class SettingsComponent {
     lastName: ['', Validators.required],
     username: [{ value: '', disabled: true }, Validators.required],
     description: [''],
-    stack: [''],
+    stack: [{ value: '' }],
   });
 
   constructor() {
