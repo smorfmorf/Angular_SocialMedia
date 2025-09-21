@@ -13,6 +13,7 @@ import { firstValueFrom } from 'rxjs';
 import { HeaderComponent } from '../../ui/header/header.component';
 import { AvatarUploadComponent } from '../../ui/avatar-upload/avatar-upload.component';
 import { StackInputComponent } from '@tt/common-ui';
+import { AddressInputComponent } from '@tt/common-ui';
 
 @Component({
   selector: 'app-settings',
@@ -21,6 +22,7 @@ import { StackInputComponent } from '@tt/common-ui';
     ReactiveFormsModule,
     AvatarUploadComponent,
     StackInputComponent,
+    AddressInputComponent,
   ],
   templateUrl: './settings.component.html',
   styleUrl: './settings.component.scss',
@@ -40,6 +42,7 @@ export class SettingsComponent {
     username: [{ value: '', disabled: true }, Validators.required],
     description: [''],
     stack: [{ value: '' }],
+    city: [''],
   });
 
   constructor() {
