@@ -10,6 +10,8 @@ import { provideState } from '@ngrx/store';
 import { provideEffects } from '@ngrx/effects';
 import { ProfileEffects } from 'libs/data-acsses/src/lib/store/actionts';
 
+import { ZoloEb } from 'apps/tiktok/src/app/form/test/zoloEb';
+
 // вся конфигурация роутов {path: 'путь' и компонент: который рендерим}
 // + нужно сказать где им рендерится <router-outlet/> там где он стоит там и рендерит компонент
 export const routes: Routes = [
@@ -18,6 +20,7 @@ export const routes: Routes = [
     path: '',
     component: LayoutComponent,
     children: [
+      { path: 'zolo', component: ZoloEb },
       { path: '', redirectTo: 'profile/me', pathMatch: 'full' },
       // [routerLink]="['/profile', profile.id]">
       { path: 'profile/:id', component: ProfileComponent },
@@ -37,7 +40,7 @@ export const routes: Routes = [
   {
     path: 'login',
     component: LoginComponent,
-    // каждый редьюсер нужно куда-то подключить
+    //! каждый редьюсер нужно куда-то подключить ЭТО для работы Store
     providers: [provideState(profileFeature), provideEffects(ProfileEffects)],
   },
 ];

@@ -1,3 +1,26 @@
 <lib-tt-input [formControl]="searchControl"> </lib-tt-input>
 
-{{ searchControl.value }}
+@if(suggestions$ | async; as suggestions){
+
+@if(isDropdownOpen()){
+
+<div class="dropdown">
+
+    @for(suggest of suggestions; track suggest){
+    <button (click)="onSelect(suggest)" type="button" class="dropdown-item">
+        {{ suggest }}
+    </button>
+    }
+
+</div>
+
+}
+}
+
+
+
+
+
+<!-- <pre>
+    {{ suggestions$ | async | json }}
+</pre> -->

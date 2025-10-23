@@ -6,6 +6,10 @@ import { AuthService } from '../../../../data-acsses/src/lib/auth/auth.service';
 
 // 🧠Interceptor Каждый HTTP-запрос перехватывается (и проверяет токен).
 export const authToken_Interceptor: HttpInterceptorFn = (req, next) => {
+  if (req.url.includes('dadata.ru')) {
+    return next(req);
+  }
+
   const authService = inject(AuthService);
   const token = authService.token;
   console.log('token: ', token);

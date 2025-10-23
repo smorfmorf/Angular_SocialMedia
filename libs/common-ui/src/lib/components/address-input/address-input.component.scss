@@ -1,0 +1,31 @@
+:host {
+  position: relative;
+}
+
+.dropdown {
+  position: absolute;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background-color: #5f646d;
+  padding: 6px;
+
+  display: grid;
+  place-items: center;
+  gap: 4px;
+
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  z-index: 1;
+
+  &-item {
+    background: none;
+    border: none;
+    cursor: pointer;
+
+    &:hover {
+      background-color: var(--primaryColor);
+      color: black;
+    }
+  }
+}
+
+// в UI-kit делаю отдельными компонентами dropDown отдельный Компонент который прикрепляет к любому контролу
