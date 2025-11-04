@@ -15,7 +15,6 @@ export class ProfileCardComponent {
   readonly UserCheck = UserCheck;
   // Props:
   @Input() profile?: Profile;
-  @Input() max?: string;
   router = inject(Router);
 
   async sendMessage(id: number) {

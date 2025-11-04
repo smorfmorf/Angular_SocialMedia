@@ -45,6 +45,8 @@ export interface CommmentCreateDto {
   providedIn: 'root',
 })
 export class PostService {
+  time = Math.random() * 1000
+
   http = inject(HttpClient);
   baseApiUrl = 'https://icherniakov.ru/yt-course/';
 

@@ -34,7 +34,7 @@ export class StackInputComponent implements ControlValueAccessor {
   value = signal<string[]>(['angular']);
   ghostInput = '';
   disabled = false;
-  onChange(value: string[] | null) {}
+  onChange(value: string[] | null) { }
 
   @HostListener('keydown.enter', ['$event'])
   onEnter(event: KeyboardEvent) {
@@ -75,7 +75,7 @@ export class StackInputComponent implements ControlValueAccessor {
     this.onChange = fn;
   }
 
-  registerOnTouched(fn: any): void {}
+  registerOnTouched(fn: any): void { }
   setDisabledState?(isDisabled: boolean): void {
     console.log('✌️isDisabled --->', isDisabled);
     this.disabled = isDisabled;

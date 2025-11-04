@@ -8,7 +8,6 @@
   @for (profile of profiles(); track profile.id; let last = $last) {
   <app-profile-card
     [profile]="profile"
-    [max]="'trueaw'"
     (waIntersectionObservee)="last && onIntersection($event)"
   />
   }

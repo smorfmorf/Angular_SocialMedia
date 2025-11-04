@@ -22,13 +22,16 @@ import { Component, forwardRef, input } from '@angular/core';
     },
   ],
 })
+
+// implement - это когда берем обязательсво реализовать все чтобы подходило к тому от чего имплементируем  
+// Forms, мощный механизм DI, RxJS OOP
 export class TtInputComponent implements ControlValueAccessor {
   type = input<'text' | 'password'>('text');
 
   onChangeValue: any;
   value: string | null = null;
 
-  // writeValue нужна чтобы модель отдала значение вьюхи
+  // writeValue нужна чтобы модель отдала значение вьюхе
   writeValue(val: string | null): void {
     this.value = val;
   }
@@ -38,7 +41,6 @@ export class TtInputComponent implements ControlValueAccessor {
     this.onChangeValue = fn;
   }
 
-  registerOnTouched(fn: any): void {}
+  registerOnTouched(fn: any): void { }
 }
 
-// implement - это когда берем обязательсво реализовать все чтобы подходило к тому от чего имплементируем  Forms, мощный механизм DI, RxJS OOP

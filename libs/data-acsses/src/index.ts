@@ -6,3 +6,5 @@ export { ProfileService } from './lib/profile/profile.service';
 
 export type { Message } from './lib/chats/chats.service';
 export { ChatsService } from './lib/chats/chats.service';
+
+export { DadataService } from './lib/DadataService/dadata.service';

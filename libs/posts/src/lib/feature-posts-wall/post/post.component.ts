@@ -18,6 +18,7 @@ import {
   PostComment,
   PostService,
 } from '../../../../../data-acsses/src/lib/posts/post.service';
+import { TestDirective } from '../post-list/test.derictive';
 
 @Component({
   selector: 'app-post',
@@ -31,11 +32,23 @@ import {
   ],
   templateUrl: './post.component.html',
   styleUrl: './post.component.scss',
+
+
 })
 export class PostComponent implements OnInit {
+
+  // postService = inject(PostService);
+
+  constructor(private postService: PostService) {
+    console.log('time: ', this.postService.time);
+  }
+
+  directive = inject(TestDirective);
+
+
+
   post = input<Post>();
   comments = signal<PostComment[]>([]);
-  postService = inject(PostService);
 
   ngOnInit() {
     this.comments.set(this.post()!.comments);

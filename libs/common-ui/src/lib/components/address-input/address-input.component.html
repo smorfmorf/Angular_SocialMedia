@@ -1,3 +1,17 @@
 <lib-tt-input [formControl]="searchControl"> </lib-tt-input>
 
-{{ searchControl.value }}
+@if (suggestions$ | async; as suggestions){ @if(isDropDown()){
+<div class="suggestions-dropdown">
+  @for(suggest of suggestions; track suggest) {
+  <button (click)="onPickSuggest(suggest)" class="suggest-btn">
+    {{ suggest.data.city }} {{ suggest.data.street }} {{ suggest.data.house }}
+  </button>
+  }
+</div>
+}}
+
+<div [formGroup]="addressForm">
+  <lib-tt-input formControlName="city"> </lib-tt-input>
+  <lib-tt-input formControlName="street"> </lib-tt-input>
+  <lib-tt-input formControlName="house"> </lib-tt-input>
+</div>

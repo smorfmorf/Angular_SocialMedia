@@ -9,17 +9,26 @@ import { PostInputComponent } from '../../ui/post-input/post-input.component';
 import { PostComponent } from '../post/post.component';
 import { debounceTime, firstValueFrom, fromEvent } from 'rxjs';
 import { PostService } from '../../../../../data-acsses/src/lib/posts/post.service';
+import { TestDirective } from './test.derictive';
 
 @Component({
   selector: 'app-post-list',
-  imports: [PostInputComponent, PostComponent],
+  imports: [PostInputComponent, PostComponent, TestDirective],
   templateUrl: './post-list.component.html',
   styleUrl: './post-list.component.scss',
 })
 export class PostListComponent {
+
+
+
+
   constructor() {
     firstValueFrom(this.postService.fetchPosts());
+
   }
+
+
+
   postService = inject(PostService);
   posts = this.postService.posts;
   render2 = inject(Renderer2);

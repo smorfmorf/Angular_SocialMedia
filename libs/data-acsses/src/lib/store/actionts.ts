@@ -2,7 +2,7 @@ import { Profile, ProfileService } from '../profile/profile.service';
 import { inject, Injectable } from '@angular/core';
 import { createActionGroup, props, Store } from '@ngrx/store';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
-import { map, switchMap, withLatestFrom } from 'rxjs';
+import { map, switchMap, throwError, withLatestFrom } from 'rxjs';
 import { selectFilters, selectProfilePage } from './selector';
 
 // экшены либо можно по одному расписывать
@@ -27,12 +27,13 @@ export class ProfileEffects {
   profileService = inject(ProfileService);
   store = inject(Store);
 
-  constructor() {}
+  constructor() { }
 
   filterProfiles = createEffect(() => {
     return this.actions$.pipe(
+      // слушаем экшены определенные
       ofType(prfoileActions.filterEvents, prfoileActions.setPage),
-      // делает массив из двух экшенов
+      // склеиваем в массив + 2 селекта (withLatestFrom - подтягиваем актуальную инфу из потоков которые в нем прописаны)
       withLatestFrom(
         this.store.select(selectProfilePage),
         this.store.select(selectFilters)
@@ -49,3 +50,6 @@ export class ProfileEffects {
     );
   });
 }
+
+
+
