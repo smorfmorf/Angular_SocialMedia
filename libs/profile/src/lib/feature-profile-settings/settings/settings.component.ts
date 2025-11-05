@@ -56,6 +56,10 @@ export class SettingsComponent {
         // stack: this.mergeStack(this.profile()?.stack),
       });
     });
+
+    this.form.valueChanges.subscribe(value => {
+      console.log('Форма изменилась:', value);
+    });
   }
 
   onSave() {

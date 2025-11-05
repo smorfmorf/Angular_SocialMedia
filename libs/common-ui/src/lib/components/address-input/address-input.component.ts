@@ -20,7 +20,6 @@ ForwardRef - это "обещание" что такой класс скоро �
 @Component({
   selector: 'lib-address-input',
   imports: [TtInputComponent, ReactiveFormsModule, AsyncPipe, JsonPipe],
-  imports: [TtInputComponent, ReactiveFormsModule, AsyncPipe, JsonPipe],
   templateUrl: './address-input.component.html',
   styleUrl: './address-input.component.scss',
   providers: [
