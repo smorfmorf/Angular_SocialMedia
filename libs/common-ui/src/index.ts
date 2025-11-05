@@ -5,3 +5,4 @@ export { InfinityScrollTriggerComponent } from './lib/components/infinity-scroll
 export { TtInputComponent } from './lib/components/tt-input/tt-input.component';
 export { StackInputComponent } from './lib/components/stack-input/stack-input.component';
 export { AddressInputComponent } from './lib/components/address-input/address-input.component';
+export { DadataService } from './lib/components/address-input/dadata.service';

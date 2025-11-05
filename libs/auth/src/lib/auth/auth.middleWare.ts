@@ -11,6 +11,10 @@ export const authToken_Interceptor: HttpInterceptorFn = (req, next) => {
     return next(req);
   }
 
+  if (req.url.includes('dadata.ru')) {
+    return next(req);
+  }
+
   const authService = inject(AuthService);
   const token = authService.token;
   console.log('token: ', token);
