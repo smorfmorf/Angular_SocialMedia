@@ -1,6 +1,5 @@
 <div class="stack-control">
-  @if(value().length > 0) {
-  @for(tech of value(); track tech; let idx = $index)
+  @if(value().length > 0) { @for(tech of value(); track tech; let idx = $index)
   {
   <div class="stack-tag skill-tag">
     <button type="button" (click)="onDelete(idx)" class="stack-btn__delete">
@@ -8,7 +7,6 @@
     </button>
     {{ tech }}
   </div>
-  }
-  }
+  } }
   <input [(ngModel)]="ghostInput" type="text" class="stack-ghost-input" />
 </div>
