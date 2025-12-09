@@ -38,7 +38,7 @@ export interface Message {
 })
 export class ChatsService {
   http = inject(HttpClient);
-  baseApiUrl = 'https://icherniakov.ru/yt-course/';
+  baseApiUrl = '/yt-course/';
   me = inject(ProfileService).myAccount;
   authService = inject(AuthService);
 
