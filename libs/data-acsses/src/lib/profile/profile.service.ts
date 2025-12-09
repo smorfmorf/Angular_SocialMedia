@@ -32,7 +32,9 @@ export interface Subscribers {
 export class ProfileService {
   // inject - запросить что-то чтобы выводить
   http = inject(HttpClient);
-  baseApiUrl = 'https://icherniakov.ru/yt-course/';
+  // baseApiUrl = 'https://icherniakov.ru/yt-course/';
+  baseApiUrl = '/yt-course/';
+
   myAccount = signal<Profile | null>(null);
   filteredProfiles = signal<Profile[]>([]);
 

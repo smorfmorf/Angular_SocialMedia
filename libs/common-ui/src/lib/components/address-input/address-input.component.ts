@@ -1,9 +1,15 @@
 import { Component, forwardRef, inject, signal } from '@angular/core';
-import { ControlValueAccessor, FormControl, FormGroup, NG_VALUE_ACCESSOR, ReactiveFormsModule } from '@angular/forms';
+import {
+  ControlValueAccessor,
+  FormControl,
+  FormGroup,
+  NG_VALUE_ACCESSOR,
+  ReactiveFormsModule,
+} from '@angular/forms';
 import { TtInputComponent } from '../tt-input/tt-input.component';
 import { debounceTime, switchMap, tap } from 'rxjs';
 import { DadataService } from '@tt/data-acsses';
-import { AsyncPipe, JsonPipe } from "@angular/common";
+import { AsyncPipe, JsonPipe } from '@angular/common';
 
 /**
  * ? Это кастомный контрол(Custom Form Control), который ты регистрируешь, чтобы Angular мог использовать его в реактивных формах как обычный <input>.
@@ -33,50 +39,48 @@ ForwardRef - это "обещание" что такой класс скоро �
 })
 // 2️⃣ Потом компилируется класс
 export class AddressInputComponent implements ControlValueAccessor {
-  isDropDown = signal(true)
+  isDropDown = signal(true);
 
   searchControl = new FormControl('');
-  private dadataService = inject(DadataService)
+  private dadataService = inject(DadataService);
 
   suggestions$ = this.searchControl.valueChanges.pipe(
     debounceTime(500),
-    switchMap((val: any) => this.dadataService.getSuggestion(val).pipe(
-      tap((res: any[]) => {
-        this.isDropDown.set(Boolean(res.length))
-      })
-    )),
-  )
+    switchMap((val: any) =>
+      this.dadataService.getSuggestion(val).pipe(
+        tap((res: any[]) => {
+          this.isDropDown.set(Boolean(res.length));
+        })
+      )
+    )
+  );
 
   onPickSuggest(suggest: any) {
     this.isDropDown.set(false);
 
-
     this.addressForm.patchValue({
       city: suggest.data.city,
       street: suggest.data.street,
-      house: suggest.data.house
-    })
+      house: suggest.data.house,
+    });
 
     // this.searchControl.patchValue(suggest, {
     //   emitEvent: false
     // })
     // this.onChange(suggest);
-
   }
 
-  onChange(value: any) { }
+  onChange(value: any) {}
   writeValue(city: string): void {
     this.searchControl.patchValue(city, {
-      emitEvent: false
-    })
-
+      emitEvent: false,
+    });
   }
   registerOnChange(fn: any): void {
     this.onChange = fn;
-    this.onChange = fn;
   }
-  registerOnTouched(fn: any): void { }
-  setDisabledState?(isDisabled: boolean): void { }
+  registerOnTouched(fn: any): void {}
+  setDisabledState?(isDisabled: boolean): void {}
 
   // ----------
 
@@ -84,7 +88,5 @@ export class AddressInputComponent implements ControlValueAccessor {
     city: new FormControl(''),
     street: new FormControl(''),
     house: new FormControl(''),
-  })
-
-
+  });
 }
