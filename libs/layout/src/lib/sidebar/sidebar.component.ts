@@ -49,9 +49,9 @@ export class SidebarComponent {
   ];
 
   ngOnInit(): void {
+    //   this.profileService.getMe().subscribe();
     //* как можно не подписываясь выполнить запрос: Когда делаем подписку нужно сделать отписку. firstValueFrom - получаем Promise и он сам выполняется и потом "умирает".
     firstValueFrom(this.profileService.getMe());
-
     this.chatService.connectWebSocket();
   }
 }

@@ -6,6 +6,13 @@
     "@schematics/angular:component": {
       "style": "scss",
       "skipTests": true
+    },
+    "@nx/angular:library": {
+      "linter": "eslint",
+      "unitTestRunner": "jest"
+    },
+    "@nx/angular:component": {
+      "style": "css"
     }
   },
   "sourceRoot": "apps/tiktok/src",
