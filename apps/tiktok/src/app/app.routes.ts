@@ -22,7 +22,8 @@ export const routes: Routes = [
     children: [
       { path: 'zolo', component: ZoloEb },
       { path: '', redirectTo: 'profile/me', pathMatch: 'full' },
-      // [routerLink]="['/profile', profile.id]">
+      
+// ~ [routerLink]="['/profile', profile.id]">
       { path: 'profile/:id', component: ProfileComponent },
       { path: 'settings', component: SettingsComponent },
       {
