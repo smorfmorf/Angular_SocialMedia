@@ -25,7 +25,8 @@ export const routes: Routes = [
       { path: 'community', component: CommunityComponent },
 
       { path: '', redirectTo: 'profile/me', pathMatch: 'full' },
-      // [routerLink]="['/profile', profile.id]">
+      
+// ~ [routerLink]="['/profile', profile.id]">
       { path: 'profile/:id', component: ProfileComponent },
       { path: 'settings', component: SettingsComponent },
       {

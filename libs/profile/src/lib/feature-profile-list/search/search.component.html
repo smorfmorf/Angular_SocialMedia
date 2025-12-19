@@ -11,14 +11,10 @@
     (waIntersectionObservee)="last && onIntersection($event)"
   />
   }
+  <!-- @if(last){ @defer(on viewport){
+  // defer - лениво загружает какие-то блоки (ангуляр выносит при компиляции в отдельный chank и грузит только когда нужно )
+  <lib-infinity-scroll-trigger (loaded)="timeToFetch()" />
+  }@placeholder {
+  <div></div>
+  }}  -->
 </div>
-
-<!--
-@if(last){
- @defer(on viewport){
-<lib-infinity-scroll-trigger (loaded)="timeToFetch()" />
-}@placeholder {
-<div></div>
-}} -->
-
-<!-- defer - лениво загружает какие-то блоки (ангуляр выносит при компиляции в отдельный chank и грузит только когда нужно ) -->

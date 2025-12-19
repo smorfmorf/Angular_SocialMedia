@@ -9,8 +9,5 @@ import { SidebarComponent } from '../sidebar/sidebar.component';
   styleUrl: './layout.component.scss',
 })
 export class LayoutComponent {
-  // profileService = inject(ProfileService);
-  // ngOnInit(): void {
-  //   this.profileService.getMe().subscribe();
-  // }
+
 }

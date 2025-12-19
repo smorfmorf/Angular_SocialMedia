@@ -30,14 +30,13 @@ export class SearchComponent {
   store = inject(Store);
   profiles = this.store.selectSignal(selectProfileFiltered);
 
-  console = console;
 
   constructor() {
     console.log('profiles: ', this.profiles());
   }
 
   timeToFetch() {
-    console.log('7566436');
+    console.log('timeToFetch: ');
     this.store.dispatch(prfoileActions.setPage({}));
   }
 

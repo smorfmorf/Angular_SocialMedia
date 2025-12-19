@@ -10,6 +10,11 @@ export class InfinityScrollTriggerComponent {
   loaded = output<void>();
 
   ngOnInit() {
+    console.log('emit');
     this.loaded.emit();
+  }
+
+  ngOnDestroy() {
+    console.log('destroy');
   }
 }
