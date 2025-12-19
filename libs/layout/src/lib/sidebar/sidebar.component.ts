@@ -46,6 +46,11 @@ export class SidebarComponent {
       link: '/chats',
       count: this.unreadMessageWebSocket,
     },
+    {
+      label: 'Сообщества',
+      icon: '',
+      link: '/community',
+    },
   ];
 
   ngOnInit(): void {

@@ -15,6 +15,9 @@ import { ChildComponent } from './child-component';
 })
 export class ZoloEb {
   count = signal(0);
+  constructor() {
+    console.log('AppComponent');
+  }
 
   increment() {
     console.log('AppComponent: сигнал изменился');

@@ -1,3 +1,5 @@
+<hr>
+
 <p>angular15min works!</p>
 
 @switch (pageTitle()) { @case ('one') {
@@ -8,4 +10,4 @@
 
 <h2>{{ pageTitle() }}</h2>
 
-<app-children-component (yes)="onAnswerYes($event)" />
+<app-children-component (yes)="onAnswerYes($event)" (TestEmitAngular)="handleCheck($event)" />

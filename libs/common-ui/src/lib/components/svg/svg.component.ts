@@ -9,9 +9,8 @@ import { Component, Input } from '@angular/core';
 export class svg {
   @Input() icon = '';
 
-  // вычисляемое свойство
+  // имя файла + внутри svg ссылаемся на #id символа
   get href() {
-    // имя файла + внутри svg ссылаемся на #id символа
     return `all.svg#${this.icon}`;
   }
 }

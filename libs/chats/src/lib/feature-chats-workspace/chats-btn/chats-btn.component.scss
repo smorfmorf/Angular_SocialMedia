@@ -9,7 +9,7 @@
   &:hover {
     transition: all 0.3s;
     transform: translateY(-6px);
-    box-shadow: 0px 0px 0px rgba(169, 2, 2, 0.7);
+    box-shadow: 0px 6px 6px rgba(12, 34, 226, 1);
     background-color: var(--darkActive);
   }
   &.active {

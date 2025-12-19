@@ -23,4 +23,8 @@ export class Angular15minComponent implements OnDestroy {
     console.log('Компонент Умер))');
     this.pageTitle.set('gg');
   }
+
+  handleCheck(event: any) {
+    console.log('handleCheck: ', event);
+  }
 }

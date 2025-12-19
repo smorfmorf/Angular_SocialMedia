@@ -23,6 +23,7 @@
       "@tt/layout": ["libs/layout/src/index.ts"],
       "@tt/posts": ["libs/posts/src/index.ts"],
       "@tt/profile": ["libs/profile/src/index.ts"],
+      "@tt/community": ["libs/community/src/index.ts"],
       "infinity-scroll-trigger": [
         "libs/common-ui/src/lib/components/infinity-scroll-trigger/src/index.ts"
       ]

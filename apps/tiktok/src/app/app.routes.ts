@@ -9,6 +9,7 @@ import { profileFeature } from 'libs/data-acsses/src/lib/store/reducer';
 import { provideState } from '@ngrx/store';
 import { provideEffects } from '@ngrx/effects';
 import { ProfileEffects } from 'libs/data-acsses/src/lib/store/actionts';
+import { CommunityComponent } from '@tt/community';
 
 import { ZoloEb } from 'apps/tiktok/src/app/form/test/zoloEb';
 
@@ -21,6 +22,8 @@ export const routes: Routes = [
     component: LayoutComponent,
     children: [
       { path: 'zolo', component: ZoloEb },
+      { path: 'community', component: CommunityComponent },
+
       { path: '', redirectTo: 'profile/me', pathMatch: 'full' },
       // [routerLink]="['/profile', profile.id]">
       { path: 'profile/:id', component: ProfileComponent },
