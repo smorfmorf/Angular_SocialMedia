@@ -1,1 +1,16 @@
-<p>Community works!</p>
+<div class="grid">
+  @for (comunitie of posts(); track comunitie.id) {
+  <div class="flex">
+    <img [src]="comunitie.bannerUrl | imgUrl" width="100px" />
+
+    <p>{{ comunitie.name }}</p>
+    <p>{{ comunitie.description }}</p>
+
+    @if (!comunitie.isJoined && getMe()?.id != comunitie.admin.id) {
+    <button>Подписаться</button>
+    } @else {
+    <button>Отписаться</button>
+    }
+  </div>
+  }
+</div>
